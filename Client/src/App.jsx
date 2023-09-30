@@ -1,46 +1,46 @@
-// /* eslint-disable react/jsx-no-undef */
-// //commons imports
-// import  { useState, useEffect } from 'react';
-// import axios from 'axios';
+/* eslint-disable react/jsx-no-undef */
+//commons imports
+import  { useState, useEffect } from 'react';
+import axios from 'axios';
 
-// //components
-// import Home from './components/Home/Home';
-// //import Cards from './components/Cards/Cards.jsx';
-// import NavBar from './components/NavBar/NavBar.jsx';
-// import About from "./components/About/About.jsx";
-// import Form from "./components/Form/Form.jsx";
-// import Random from "./components/Random/Random.jsx";
+//components
+import Home from './components/Home/Home';
+//import Cards from './components/Cards/Cards.jsx';
+import NavBar from './components/NavBar/NavBar.jsx';
+import About from "./components/About/About.jsx";
+import Form from "./components/Form/Form.jsx";
+import Random from "./components/Random/Random.jsx";
 
-// //Router-Dom
-// import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
-// import Detail from "./components/Detail/Detail.jsx";
+//Router-Dom
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import Detail from "./components/Detail/Detail.jsx";
 
-// import PATHROUTES from "./helpers/PathRoutes.helper.js";
+import PATHROUTES from "./helpers/PathRoutes.helper.js";
 
-// //styles
-// import styles from './App.css';
-// import Favorites from './components/Favorites/Favorites';
+//styles
+import styles from './App.css';
+import Favorites from './components/Favorites/Favorites';
 
-// function App() {
-//    const [characters, setCharacters]=useState([]);
-//    const {pathname} = useLocation();
-//    const navigate = useNavigate();
-//    const [access, setAccess] = useState(false);
-//    const [existingCharacterIds, setExistingCharacterIds] = useState(new Set()); 
+function App() {
+//   const [characters, setCharacters]=useState([]);
+   const {pathname} = useLocation();
+   const navigate = useNavigate();
+   const [access, setAccess] = useState(false);
+//   const [existingCharacterIds, setExistingCharacterIds] = useState(new Set()); 
 
-//    function login(userData) {
-//       const { email, password } = userData;
-//       const URL = 'http://localhost:3001/rickandmorty/login/';
-//       axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
-//          const { access } = data;
-//          setAccess(data);
-//          access && navigate('/home');
-//       });
-//    }
+   function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
+   }
   
-//    useEffect(() => {
-//     !access && navigate('/');
-//   }, [access, navigate]);
+   useEffect(() => {
+    !access && navigate('/');
+  }, [access, navigate]);
 
 
 //    function onSearch(id) {
@@ -73,25 +73,23 @@
 //    )
 //   }
 
-//    return (
-//       <><div className={styles.active}></div>
-//       <div className='App'>
-//          {pathname !== '/' && <NavBar onSearch={onSearch} />}
+   return (
+      <><div className={styles.active}></div>
+      {/* <div className='App'>
+         {pathname !== '/' && <NavBar onSearch={onSearch} />} */}
 
-//          <Routes>
+         <Routes>
 
-//             <Route path={PATHROUTES.LOGIN} element={<Form login={login} />} />
-//             <Route path={PATHROUTES.HOME} element={<Home characters={characters} onClose={onClose} />} />
-//             {/* <Route path={PATHROUTES.HOME} element={<Cards characters={characters} onClose={onClose} />}/> */}
-//             <Route path={PATHROUTES.ABOUT} element={<About />} />
-//             <Route path={PATHROUTES.DETAIL} element={<Detail onClose={onClose}/>} />
-//             <Route path={PATHROUTES.FAVORITES} element={<Favorites />} />
-//             <Route path={PATHROUTES.RANDOM} element ={<Random />} />
+            <Route path={PATHROUTES.LOGIN} element={<Form login={login} />} />
+            <Route path={PATHROUTES.HOME} element={<Home characters={characters} onClose={onClose} />} />
+            {/* <Route path={PATHROUTES.HOME} element={<Cards characters={characters} onClose={onClose} />}/> */}
+            <Route path={PATHROUTES.ABOUT} element={<About />} />
+            <Route path={PATHROUTES.DETAIL} element={<Detail onClose={onClose}/>} />
+            <Route path={PATHROUTES.FAVORITES} element={<Favorites />} />
+            <Route path={PATHROUTES.RANDOM} element ={<Random />} />
 
-//          </Routes>
+         </Routes>
+   )
+}
 
-//       </div></>
-//    );
-// }
-
-//  export default App;
+export default App;
